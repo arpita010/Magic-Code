@@ -1,0 +1,196 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+  private static BufferedReader br;
+  private static StringTokenizer st;
+  private static BufferedWriter bw;
+
+  private static String str(char[] ch) {
+    return String.valueOf(ch);
+  }
+
+  private static char[] chars(String s) {
+    return s.toCharArray();
+  }
+
+  private static int gcd(int a, int b) {
+    if (a == 0) return b;
+    if (b == 0) return a;
+    return gcd(b, a % b);
+  }
+
+  private static long gcd(long a, long b) {
+    if (a == 0) return b;
+    if (b == 0) return a;
+    return gcd(b, a % b);
+  }
+
+  private static String next() {
+    while (st == null || !st.hasMoreTokens()) {
+      try {
+        st = new StringTokenizer(br.readLine());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    return st.nextToken();
+  }
+
+  private static int Int() {
+    return Integer.parseInt(next());
+  }
+
+  private static long L() {
+    return Long.parseLong(next());
+  }
+
+  private static double Dbl() {
+    return Double.parseDouble(next());
+  }
+
+  private static void print(Object object) throws IOException {
+    bw.append("" + object);
+  }
+
+  private static void println(Object object) throws IOException {
+    print(object);
+    bw.append("\n");
+  }
+
+  private static void close() throws IOException {
+    bw.close();
+  }
+
+  private static String Str() {
+    String str = "";
+    try {
+      str = br.readLine().trim();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return str;
+  }
+
+  private static int[] intArr(int n) {
+    int[] arr = new int[n];
+    for (int i = 0; i < n; i++) arr[i] = Int();
+    return arr;
+  }
+
+  private static long[] longArr(int n) {
+    long[] arr = new long[n];
+    for (int i = 0; i < n; i++) arr[i] = L();
+    return arr;
+  }
+
+  private static String[] stringArr(int n) {
+    String[] arr = new String[n];
+    for (int i = 0; i < n; i++) arr[i] = Str();
+    return arr;
+  }
+
+  private static void YES() throws IOException {
+    println("YES");
+  }
+
+  private static void NO() throws IOException {
+    println("NO");
+  }
+
+  private static void yes() throws IOException {
+    println("yes");
+  }
+
+  private static void no() throws IOException {
+    println("no");
+  }
+
+  private static void Yes() throws IOException {
+    println("Yes");
+  }
+
+  private static void No() throws IOException {
+    println("No");
+  }
+
+  private static void swap(int[] arr, int i, int j) {
+    int t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+  }
+
+  private static void swap(long[] arr, int i, int j) {
+    long t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+  }
+
+  private static void swap(char[] arr, int i, int j) {
+    char t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+  }
+
+  public static void main(String[] args) {
+    // set-up input and output streams
+    try {
+      br = new BufferedReader(new InputStreamReader(System.in));
+      bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    } catch (Exception e) {
+
+    }
+    try {
+      int t = 1;
+      while (t-- > 0) {
+        solve();
+      }
+      close();
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+  }
+
+  private static boolean prime(long n) {
+    if (n <= 1) return false;
+    if (n == 2) return true;
+    for (long i = 2l; i * i <= n; i++) {
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
+
+  // upper bound index of the target value
+  private static int UB(int[] arr, int x) {
+    int l = 0;
+    int h = arr.length - 1;
+    int ans = -1;
+    while (l <= h) {
+      int mid = l + (h - l) / 2;
+      if (arr[mid] <= x) {
+        ans = mid;
+        l = mid + 1;
+      } else h = mid - 1;
+    }
+    return ans;
+  }
+
+  // lower bound index of the target value
+  private static int LB(int[] arr, int x) {
+    int l = 0;
+    int h = arr.length - 1;
+    int ans = -1;
+    while (l <= h) {
+      int mid = l + (h - l) / 2;
+      if (arr[mid] >= x) {
+        ans = mid;
+        h = mid - 1;
+      } else l = mid + 1;
+    }
+    return ans;
+  }
+
+  private static void solve() throws Exception {
+
+  }
+}
